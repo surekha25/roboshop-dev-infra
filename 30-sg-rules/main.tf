@@ -15,3 +15,12 @@ resource "aws_security_group_rule" "bastion_laptop" {
   to_port           = 22
   protocol          = "tcp"
 }
+
+resource "aws_security_group_rule" "mongodb_bastion" {
+  type = "ingress"
+  security_group_id = local.mongodb_sg_id
+  source_security_group_id = local.bastion_sg_id
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+}
