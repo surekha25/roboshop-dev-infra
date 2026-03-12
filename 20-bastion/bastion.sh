@@ -1,8 +1,12 @@
 #!/bin/bash
 
-#growing the /home volume for terraform purpose
+# extend partition
 growpart /dev/nvme0n1 4
-lvextend -L +30G /dev/RootVG/rootVol
+# resize LVM physical volume
+pvresize /dev/nvme0n1p4
+# extend logical volume
+lvextend -L +30G /dev/mapper/RootVG-homeVol
+# grow filesystem
 xfs_growfs /home
 
 sudo yum install -y yum-utils
