@@ -15,3 +15,10 @@ sudo yum -y install terraform
 
 # if we extend root volume size by mistakenly, we should use to reduce size using below command
 # sudo lvreduce -r -L 6G /dev/mapper/RootVG-rootVol
+
+# creating databases
+cd /home/ec2-user
+git clone https://github.com/surekha25/roboshop-dev-infra.git
+cd roboshop-dev-infra/40-database
+terraform init
+terraform apply -auto-approve
