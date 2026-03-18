@@ -6,7 +6,7 @@
 #   default = 10
 # }
 
-variable "components" {
+variable "component" {
   type = map(object({
     rule_priority = number
   }))
