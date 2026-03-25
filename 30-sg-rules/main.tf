@@ -355,3 +355,12 @@ resource "aws_security_group_rule" "openvpn_1194" {
   to_port           = 1194
   protocol          = "tcp"
 }
+
+resource "aws_security_group_rule" "catalogue_openvpn" {
+  type = "ingress"
+  security_group_id = local.catalogue_sg_id 
+  source_security_group_id = local.openvpn_sg_id
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+}
