@@ -373,3 +373,13 @@ resource "aws_security_group_rule" "catalogue_openvpn_8080" {
   to_port           = 8080
   protocol          = "tcp"
 }
+
+resource "aws_security_group_rule" "components_openvpn" {
+  for_each = local.vpn_ingress_rules
+  type = "ingress"
+  security_group_id = each.value.sg_id
+  source_security_group_id = local.openvpn_sg_id
+  from_port         = each.value.port
+  to_port           = each.value.port
+  protocol          = "tcp"
+}
