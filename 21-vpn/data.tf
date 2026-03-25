@@ -1,16 +1,21 @@
-data "aws_ami" "openvpn" {  
-  most_recent      = true
-  owners           = ["966656799776"]
+data "aws_ami" "openvpn" {
+    owners           = ["444663524611"]
+    most_recent      = true
+    
+    filter {
+        name   = "name"
+        values = ["OpenVPN Access Server Community Image"]
+    }
 
-  filter {
-    name   = "name"
-    values = ["OpenVPN Access Server Community Image-3b5882c4-*"]
-  }
+    filter {
+        name   = "root-device-type"
+        values = ["ebs"]
+    }
 
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
+    filter {
+        name   = "virtualization-type"
+        values = ["hvm"]
+    }
 }
 
 data "aws_ssm_parameter" "openvpn_sg_id" {
