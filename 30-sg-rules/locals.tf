@@ -27,5 +27,25 @@ locals{
             sg_id = local.redis_sg_id
             port = 22
         }
+        mongodb_22 = {
+            sg_id = local.mongodb_sg_id
+            port = 22
+        }
+        rabbitmq_22 = {
+            sg_id = local.rabbitmq_sg_id
+            port = 22
+        }
+        catalogue_22 = {
+            sg_id = local.catalogue_sg_id
+            port = 22
+        }
+        catalogue_8080 = {
+            sg_id = local.catalogue_sg_id
+            port = 8080
+        }
+        backend_alb_80 = {
+            sg_id = local.backend_alb_sg_id
+            port = 80
+        }
     }
 }
